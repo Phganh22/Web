@@ -1,0 +1,22 @@
+body {
+    font-family: Lucida Console,Monospace;
+    text-align: center;
+}
+
+.image-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.image-container img {
+    width: 250px; 
+    height: auto;
+    opacity: 0.5; 
+    transition: opacity 0.11s ease-in-out; 
+}
+
+.image-container img:hover {
+    opacity: 1; 
+}
