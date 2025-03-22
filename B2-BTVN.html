@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baomoi.com</title>
+    <style>
+    * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px 20px;
+        }
+        .logo img {
+            width: 150px;
+            height: auto;
+        }
+        .search-box {
+            display: flex;
+            align-items: center;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 5px;
+            width: 300px;
+        }
+        .search-box input {
+            border: none;
+            outline: none;
+            flex: 1;
+            padding: 5px;
+        }
+        .search-box button {
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        .menu {
+            background-color: #1ea2b1;
+            display: flex;
+            align-items: center;
+            padding: px;
+        }
+        .menu a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .menu a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        .topics {
+            display: flex;
+            gap: 10px;
+            margin-left: 20px;
+        }
+        .topics span {
+            background-color: transparent;
+            border: 2px solid white;
+            border-radius: 20px;
+            padding: 5px 15px;
+            color: white;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        .topics span:hover {
+            background-color: white;
+            color: #1ea2b1;
+        }
+        .menu-icon {
+            margin-left: auto;
+            cursor: pointer;
+            font-size: 24px;
+            color: white;
+        }
+        .container {
+            display: flex;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 20px auto;
+            gap: 20px;
+        }
+        .main-content {
+            flex: 2;
+        }
+        .sidebar {
+            flex: 1;
+        }
+        .large-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+        .large-image img:hover {
+            transform: scale(1.01);
+        }
+        .articles {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .articles img {
+            width: 100px;
+            height: 100px;
+            border-radius: 5px;
+        }
+        .articles div {
+            flex: 1;
+        }
+        .special-link:hover {
+            color:LightPink;
+            transform: scale(1.01);
+        }
+        .special-link {  
+            font-size: 18px;
+            text-decoration: none;
+            font-weight: bold;
+            color: #E53935;
+         }
+        .container {
+            display: flex;
+            width: 90%;
+            margin: 20px auto;
+        }
+        .left-column {
+            width: 65%;
+            padding-right: 20px;
+        }
+        .right-column {
+            width: 35%;
+        }
+        .main-news img {
+            width: 100%;
+            border-radius: 5px;
+        }
+        .main-news h2 {
+            font-size: 24px;
+            margin: 10px 0;
+        }
+        .main-news p {
+            color: gray;
+            font-size: 14px;
+        }
+        .sub-news {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .sub-news .news-item {
+            flex: 1;
+            background: white;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+        .sub-news .news-item img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+        .sub-news .news-item a {
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+            margin-top: 10px;
+            display: block;
+        }
+        .sub-news .news-item a:hover {
+            color: red;
+        }
+        .right-column .news-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+        }
+        .right-column .news-item img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+        .right-column .news-item a {
+            flex: 1;
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+        }
+        .right-column .news-item a:hover {
+            color: red;
+        }
+        .back-home {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: lightblue;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+        .back-home:hover {
+            background-color: lightgrey;
+            }
+    </style>
+</head>
+<body>
+<div class="header">
+<div class="logo">
+<img src="data:image/png;base64,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" alt="Báo Mới" >
+</div>
+        <div class="search-box">
+            <input type="text" placeholder="Nhập nội dung tìm kiếm">
+            <button>🔍</button>
+        </div>
+    </div>
+    <nav class="menu">
+        <a href="#">NÓNG</a>
+        <a href="#">MỚI</a>
+        <a href="#">VIDEO</a>
+        <a href="#">CHỦ ĐỀ</a>
+        <div class="topics">
+            <span># Năng lượng tích cực</span>
+            <span># Khám phá Việt Nam</span>
+            <span># Khám phá Thế Giới</span>
+        </div>
+        <div class="menu-icon">☰</div>
+    </nav>
+    <div class="container">
+        <div class="left-column">
+            <div class="main-news">
+                <img src="https://image.nhandan.vn/w800/Uploaded/2025/jgmztgzs0208/2025_03_18/trump-5641-6153.jpg.webp" alt="Main News">
+                <h2>Nga đồng ý ngừng tấn công vào cơ sở năng lượng của Ukraine</h2>
+                <p><strong>Công an nhân dân</strong> - 16 phút - 4235 liên quan</p>
+            </div>
+            <div class="sub-news">
+                <div class="news-item">
+                    <img src="https://giadinh.mediacdn.vn/296230595582509056/2025/3/16/gia-vang-hom-nay-1742094987567767396070.jpg" alt="Sub News">
+                    <a href="#">Giá vàng hôm nay 19/3: Vàng nhẫn lập đỉnh mới, đạt mức 98,7 triệu đồng/lượng</a>
+                </div>
+                <div class="news-item">
+                    <img src="https://images2.thanhnien.vn/528068263637045248/2024/5/3/hlv-kim-sang-sik-1714744215390523397901.jpg" alt="Sub News">
+                    <a href="#">Tuyển Việt Nam đấu Campuchia: Khi ông Kim Sang Sik toan tính</a>
+                </div>
+                <div class="news-item">
+                    <img src="https://cdnmedia.baotintuc.vn/Upload/YfjSW8DWZtJKwKaxMsyNng/files/193Zelensky.png" alt="Sub News">
+                    <a href="#">Tổng thống Ukraine lên tiếng sau điện đàm thượng đỉnh Mỹ - Nga</a>
+                </div>
+            </div>
+        </div>
+        <div class="right-column">
+            <div class="news-item">
+                <img src="https://image.plo.vn/w1000/Uploaded/2025/xqeioxdrky/2023_10_29/p23-chinh-thay-1699-2346-6521.jpg.webp" alt="Right News">
+                <a href="#">Cán bộ T.PHCM mạnh dạn đổi mới vì dân - Bài 3: Cán bộ dám vận động khéo, người dân có nơi ở mới khang trang</a>
+            </div>
+            <div class="news-item">
+                <img src="https://cdn2.tuoitre.vn/thumb_w/480/471584752817336320/2025/3/18/dsc04437-1742312914889925199639.jpg" alt="Right News">
+                <a href="#">100 cán bộ Đoàn xuất sắc nhận Giải thưởng Lý Tự Trọng</a>
+            </div>
+            <div class="news-item">
+                <img src="https://cdnmedia.baotintuc.vn/Upload/QyT9wJmU1noXJSi1NqCRyg/files/2024/khongkich-18-3.jpg" alt="Right News">
+                <a href="#">Triều Tiên lên án các cuộc không kích của Mỹ vào Houthis</a>
+            </div>
+            <div class="news-item">
+                <img src="https://photo-baomoi.bmcdn.me/w700_r1/2025_03_19_23_51747746/9b5adf04d64a3f14665b.jpg.avif" alt="Right News">
+                <a href="#">Đìu hiu phố đi bộ 30 tỷ đồng ở Hà Nội: Người bán nhiều hơn khách</a>
+            </div>
+            <div class="news-item">
+                <img src="https://media.vov.vn/sites/default/files/styles/large/public/2025-03/aa1azpzn.jpg" alt="Right News">
+                <a href="#">Giải mã lối đánh giúp Nga đẩy lui quân Ukraina tại Kursk</a>
+            </div>
+            </div>
+        </div>
+    </div>
+    <section id="trangchu" class="fade-in">
+        <div class="container">
+            <b><a href="index.html" class="back-home">Quay về trang chủ</a></b>
+        </div>
+    </section>
+</body>
+</html>
+

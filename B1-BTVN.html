@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Material Sidebar</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+body {
+            background-color: #fff;
+            padding: 40px;
+            color: #000;
+        }
+        h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+.container {
+    display: flex;
+    min-height: 100vh;
+    background-color: #f5f5f5;
+    margin-left: 120px;
+
+}
+.grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 16px;
+        }
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100px;
+    height: 100vh;
+    background-color: #f8f4ff;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    padding: 20px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+}
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+}
+.sidebar ul li {
+    width: 100%;
+    text-align: center;
+    margin: 10px 0;
+}
+.sidebar ul li a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: #333;
+    font-size: 14px;
+    transition: 0.3s;
+}
+.sidebar ul li a .icon {
+    font-size: 20px;
+    display: block;
+    margin-bottom: 5px;
+}
+.sidebar ul li a:hover,
+.sidebar ul li a.active {
+    background: #ddd;
+    border-radius: 10px;
+}
+.content {
+    padding: 30px;
+    margin-left: 120px;
+    width: 100%;
+}
+.hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #f8eefc;
+            padding: 40px;
+            border-radius: 15px;
+        }
+        .hero-text {
+            max-width: 50%;
+        }
+        .hero-text h1 {
+            font-size: 48px;
+            font-weight: bold;
+        }
+        .hero-text p {
+            font-size: 16px;
+            margin: 10px 0;
+        }
+.btn {
+    background-color: #673ab7;
+    color: #fff;
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    border-radius: 25px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #512da8;
+}
+.hero-video video {
+    max-width: 100%;
+    border-radius: 16px;
+}
+.news {
+    margin-top: 40px;
+}
+
+.news h2 {
+    font-size: 32px;
+    color: #222;
+}
+.news-cards {
+            display: flex;
+            gap: 20px;
+        }
+.menu-item {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 24px;
+    transition: background 0.3s;
+}
+
+.menu-item i {
+    font-size: 24px;
+    color: #333;
+}
+
+.menu-item span {
+    font-size: 12px;
+    color: #333;
+    margin-top: 5px;
+}
+.menu-item.active {
+    background-color: #d1c4e9;
+}
+
+.menu-item:hover {
+    background-color: #e1bee7;
+}
+.search, .menu-item:last-child, .menu-item:nth-last-child(2) {
+    width: 50px;
+    height: 50px;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+}
+
+.search i {
+    font-size: 20px;
+}
+
+.grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 20px;
+        }
+        .grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 16px;
+    margin-top: 30px;
+}  
+        
+        .card {
+            background: #f9f9f9;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease-in-out;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .card-image {
+            height: 150px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+    .card-content {
+    padding: 16px;
+}
+
+.card-content h3 {
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+
+.card-content p {
+    font-size: 14px;
+    color: #555;
+}
+        
+.resources {
+    margin-top: 40px;
+}
+
+.resources-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 16px;
+}
+
+.resource-card {
+    background: #f8f4ff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background 0.3s ease-in-out;
+}
+
+.resource-card h3 {
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+
+.resource-card p {
+    font-size: 14px;
+    color: #555;
+}
+
+.resource-card.active {
+    background: #d1c4e9;
+}
+.back-home {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: lightblue;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+        .back-home:hover {
+            background-color: lightgrey;
+            }
+    </style>    
+<body>
+    <div class="container">
+        <nav class="sidebar">
+        <aside class="sidebar">
+            <div class="menu-item search">
+                <i class="ph ph-magnifying-glass"></i>
+            </div>
+            <div class="menu-item active">
+                <i class="ph ph-google-chrome-logo"></i>
+                <span>Home</span>
+            </div>
+            <div class="menu-item">
+                <i class="ph ph-grid-four"></i>
+                <span>Get started</span>
+            </div>
+            <div class="menu-item">
+                <i class="ph ph-code"></i>
+                <span>Develop</span>
+            </div>
+            <div class="menu-item">
+                <i class="ph ph-bookmark-simple"></i>
+                <span>Foundations</span>
+            </div>
+            <div class="menu-item">
+                <i class="ph ph-palette"></i>
+                <span>Styles</span>
+            </div>
+            <div class="menu-item">
+                <i class="ph ph-plus-circle"></i>
+                <span>Components</span>
+            </div>
+            <div class="menu-item">
+                <i class="ph ph-star"></i>
+                <span>Blog</span>
+            </div>
+            <div class="menu-item">
+                <i class="ph ph-columns"></i>
+            </div>
+            <div class="menu-item">
+                <i class="ph ph-moon"></i>
+            </div>
+        </aside>
+    </nav>
+
+        <main class="content">
+            <section class="hero">
+                <div class="hero-text">
+                    <h1>Material Design</h1>
+                    <p>Material 3 is the latest version of Google’s open-source design system. Design and build beautiful, usable products with Material 3.</p>
+                    <button class="btn">Get started</button>
+                </div>
+                <div class="hero-video">
+                    <video src="https://kstatic.googleusercontent.com/files/65da8f0326427a8e71bfa678348f3fa1a4bb1660e0b013591eb3bfd9df455bd5a3334249de61229029be7d2fd7cf18d4e143728b7e0702b6bde6251a9c64511a" alt="Material Design">
+                </div>
+            </section>
+            <section class="news">
+            <h2>News & launches</h2>
+            <div class="news-cards">
+                <div class="card">
+                    <div class="card-image"></div>
+                    <div class="card-content">
+                        <h3>Material Design at Google I/O</h3>
+                        <p>See the full list of Material talks and tutorials launching at I/O 2024</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-image" style="background: #00a000;"></div>
+                    <div class="card-content">
+                        <h3>How to get Google Fonts</h3>
+                        <p>New API updates and website upgrades make font integration easier than ever</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-image" style="background: #5b43ea;"></div>
+                    <div class="card-content">
+                        <h3>Figma M3 Design Kit</h3>
+                        <p>Start designing and prototyping with the complete M3 library of ready-made components</p>
+                    </div>
+                </div>
+            </div>
+            </section>
+            
+            <section class="news">
+            <h2 style="margin-top: 40px;">Design system updates</h2>
+            <div class="grid-container">
+                <div class="card">
+                    <div class="card-image" style="background: #ff5733;"></div>
+                    <div class="card-content">
+                        <h3>Content design</h3>
+                        <p>Guidance and best practices for UX writing and information design</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-image" style="background: #ff9800;"></div>
+                    <div class="card-content">
+                        <h3>New component: Carousel</h3>
+                        <p>An expressive new way to display a horizontally scrolling collection of content</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-image" style="background: #4caf50;"></div>
+                    <div class="card-content">
+                        <h3>M3 for Jetpack Compose</h3>
+                        <p>With the latest stable release, use Jetpack Compose to build a complete M3 Android app</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-image" style="background: #673ab7;"></div>
+                    <div class="card-content">
+                        <h3>Material Theme Builder</h3>
+                        <p>Easily migrate or get started with the M3 color system and dynamic color</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-image" style="background: #ffeb3b;"></div>
+                    <div class="card-content">
+                        <h3>How the color system works</h3>
+                        <p>From color roles and accessible tone pairs to dynamic color, learn how color works in Material</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-image" style="background: #2196f3;"></div>
+                    <div class="card-content">
+                        <h3>Using Material icons</h3>
+                        <p>Learn how to use and customize the latest system icons for your UI</p>
+                    </div>
+                </div>
+            </div> 
+        </section>
+
+
+        <section class="resources">
+            <h2>Resources</h2>
+            <div class="resources-container">
+                <div class="resource-card">
+                    <h3>Material blog</h3>
+                    <p>News, tutorials, and inspiration from the Material team</p>
+                </div>
+                <div class="resource-card">
+                    <h3>Figma M3 Design Kit</h3>
+                    <p>Customizable styles and components to help you design with Material 3</p>
+                </div>
+                <br>
+                <div class="resource-card">
+                    <h3>Get started</h3>
+                    <p>Guides, videos, and tools to start building with Material</p>
+                </div>
+                <div class="resource-card">
+                    <h3>Develop</h3>
+                    <p>Code and developer documentation for building with Material</p>
+                </div>
+            </div>
+            
+        </section>
+        <section id="trangchu" class="fade-in">
+            <div class="container">
+                <b><a href="index.html" class="back-home">Quay về trang chủ</a></b>
+            </div>
+        </section>
+    
+</body>
+</html>
