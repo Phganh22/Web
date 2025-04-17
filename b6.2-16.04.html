@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Bài 6.2 - Hiển thị đồng thời 4 phép toán</title>
+  <style>
+    .highlight {
+      color: red;
+      font-weight: bold;
+    }
+
+    input {
+      width: 40px;
+      text-align: center;
+    }
+
+    .ketqua p {
+      margin: 5px 0;
+    }
+    .home-button {
+            position:fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: rgb(16, 160, 134);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: bold;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+            transition: 0.3s;
+    }.home-button:hover {
+        background-color:#00CED1;}
+  </style>
+</head>
+<body>
+<a href="index.html" class="home-button">Trang Chủ</a>
+<h3>Các phép toán</h3>
+
+<table>
+  <tr>
+    <td>Phép cộng</td>
+    <td><input id="cong1" value="3"> + <input id="cong2" value="3"> = </td>
+    <td><input id="kqCong" readonly></td>
+    <td><button onclick="tinh('cong')">=</button></td>
+  </tr>
+  <tr>
+    <td>Phép trừ</td>
+    <td><input id="tru1" value="3"> - <input id="tru2" value="3"> = </td>
+    <td><input id="kqTru" readonly></td>
+    <td><button onclick="tinh('tru')">=</button></td>
+  </tr>
+  <tr>
+    <td>Phép nhân</td>
+    <td><input id="nhan1" value="2"> * <input id="nhan2" value="2"> = </td>
+    <td><input id="kqNhan" readonly></td>
+    <td><button onclick="tinh('nhan')">=</button></td>
+  </tr>
+  <tr>
+    <td>Phép chia</td>
+    <td><input id="chia1" value="3"> / <input id="chia2" value="3"> = </td>
+    <td><input id="kqChia" readonly></td>
+    <td><button onclick="tinh('chia')">=</button></td>
+  </tr>
+</table>
+
+<h3>Các phép toán vừa thực hiện</h3>
+<div class="ketqua">
+  <p id="dongCong">PHÉP CỘNG chưa thực hiện</p>
+  <p id="dongTru">PHÉP TRỪ chưa thực hiện</p>
+  <p id="dongNhan">PHÉP NHÂN chưa thực hiện</p>
+  <p id="dongChia">PHÉP CHIA chưa thực hiện</p>
+</div>
+
+<script>
+  function tinh(phep) {
+    // Xác định input và output tương ứng
+    let input1, input2, output, so1, so2, kq = '', text = '', dongId;
+
+    switch (phep) {
+      case 'cong':
+        input1 = document.getElementById("cong1");
+        input2 = document.getElementById("cong2");
+        output = document.getElementById("kqCong");
+        dongId = "dongCong";
+        break;
+      case 'tru':
+        input1 = document.getElementById("tru1");
+        input2 = document.getElementById("tru2");
+        output = document.getElementById("kqTru");
+        dongId = "dongTru";
+        break;
+      case 'nhan':
+        input1 = document.getElementById("nhan1");
+        input2 = document.getElementById("nhan2");
+        output = document.getElementById("kqNhan");
+        dongId = "dongNhan";
+        break;
+      case 'chia':
+        input1 = document.getElementById("chia1");
+        input2 = document.getElementById("chia2");
+        output = document.getElementById("kqChia");
+        dongId = "dongChia";
+        break;
+    }
+
+    so1 = parseFloat(input1.value);
+    so2 = parseFloat(input2.value);
+
+    switch (phep) {
+      case 'cong':
+        kq = so1 + so2;
+        text = `PHÉP CỘNG ${so1} + ${so2} = ${kq}`;
+        break;
+      case 'tru':
+        kq = so1 - so2;
+        text = `PHÉP TRỪ ${so1} - ${so2} = ${kq}`;
+        break;
+      case 'nhan':
+        kq = so1 * so2;
+        text = `PHÉP NHÂN ${so1} * ${so2} = ${kq}`;
+        break;
+      case 'chia':
+        if (so2 === 0) {
+          text = `PHÉP CHIA: Không thể chia cho 0`;
+          kq = '';
+        } else {
+          kq = so1 / so2;
+          text = `PHÉP CHIA ${so1} / ${so2} = ${kq}`;
+        }
+        break;
+    }
+
+    output.value = kq;
+
+    // Cập nhật dòng kết quả tương ứng
+    document.getElementById(dongId).textContent = text;
+
+    // Bỏ tô đỏ các dòng khác
+    ["dongCong", "dongTru", "dongNhan", "dongChia"].forEach(id => {
+      document.getElementById(id).classList.remove("highlight");
+    });
+
+    // Tô đỏ dòng vừa tính
+    document.getElementById(dongId).classList.add("highlight");
+  }
+</script>
+
+</body>
+</html>

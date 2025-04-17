@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Slide Show Ảnh</title>
+  <style>
+    .slideshow-container {
+      position: relative;
+      max-width: 600px;
+      margin: auto;
+    }
+
+    .slide {
+      display: none;
+    }
+
+    .slide img {
+      width: 100%;
+      height: auto;
+      border-radius: 5px;
+    }
+
+    .prev, .next {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      padding: 10px;
+      color: white;
+      font-size: 20px;
+      font-weight: bold;
+      background-color: rgba(0,0,0,0.5);
+      border: none;
+      user-select: none;
+      border-radius: 50%;
+    }
+
+    .prev:hover, .next:hover {
+      background-color: rgba(0,0,0,0.8);
+    }
+
+    .prev {
+      left: 10px;
+    }
+
+    .next {
+      right: 10px;
+    }
+    .home-button {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            background-color: #00CED1;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        .home-button:hover {
+            background-color:rgb(16, 160, 134);
+        }
+  </style>
+</head>
+<body>
+<div class="slideshow-container">
+  <div class="slide">
+    <img src="https://digishop.vnpt.vn/digitalShop/images/news/1701250627937xanh%20sapa.jpg" alt="Ảnh 1">
+  </div>
+  <div class="slide">
+    <img src="https://mic.mediacdn.vn/Upload_Moi/2023_02_vn/20232309-duy6.jpg" alt="Ảnh 2">
+  </div>
+  <div class="slide">
+    <img src="https://dulichsapa.org.vn/wp-content/uploads/Thi-Tran-Sapa1.jpg" alt="Ảnh 3">
+  </div>
+
+  <button class="prev" onclick="changeSlide(-1)">❮</button>
+  <button class="next" onclick="changeSlide(1)">❯</button>
+</div>
+<a href="index.html" class="home-button">Trang Chủ</a>
+<script>
+  let currentSlide = 0;
+  const slides = document.querySelectorAll('.slide');
+
+  function showSlide(index) {
+    slides.forEach(slide => slide.style.display = "none");
+    slides[index].style.display = "block";
+  }
+
+  function changeSlide(n) {
+    currentSlide = (currentSlide + n + slides.length) % slides.length;
+    showSlide(currentSlide);
+  }
+
+  // Hiển thị slide đầu tiên
+  showSlide(currentSlide);
+</script>
+
+</body>
+</html>
